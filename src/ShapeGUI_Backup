@@ -1,0 +1,288 @@
+/**
+ * Author: Andrew Roney
+ * Date: 01/15/2023
+ * Description: This program creates a GUI that allows the user to select a shape from a dropdown menu and display the shape in the GUI.
+ * 
+ *
+
+
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.*;
+ 
+ public class ShapeGUI {
+ 
+     //Method: create the GUI
+     public static void createGUI() {
+         //region - FRAME - Create the frame (window)
+             JFrame frame = new JFrame("Shape GUI");//This is the window that the GUI will be displayed in.
+                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                 frame.setSize(500,500);//This is the size of the window
+                 frame.setPreferredSize(new Dimension(500, 500));//This is the size of the window
+                 frame.setVisible(true);//This makes the window visible
+         //endregion
+         
+         //region - MAIN PANEL - Create the panel
+             JPanel mainPanel = new JPanel();//This is the main panel
+                 mainPanel.setLayout(new GridBagLayout());//This is the layout of the main panel
+                 mainPanel.setPreferredSize(new Dimension(500, 500));//This is the size of the main panel
+                 GridBagConstraints gbc = new GridBagConstraints();//This is the constraints for the main panel
+                 gbc.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the main panel
+         //endregion
+ 
+         //region - TITLE LABEL - Create the title label
+             JLabel titleLabel = new JLabel("Shape GUI");//This is the label for the dropdown menu
+                 GridBagConstraints gbc_title = new GridBagConstraints();//This is the constraints for the title label
+                     gbc_title.gridx = 0;//This is the x position of the title label
+                     gbc_title.gridy = 0;//This is the y position of the title label
+                     gbc_title.gridwidth = 2;//This is the width of the title label
+         //endregion
+ 
+         //region - DROPDOWN MENU - Create the dropdown menu, with Select Shape as the default option
+             String[] shapes = {"Select Shape", "Circle", "Square", "Triangle", "Rectangle", "Sphere", "Cylinder", "Cube", "Cone", "Torus"};//This is the array of shapes that will be displayed in the dropdown menu
+             JComboBox<String> dropdownCB = new JComboBox<String>(shapes);//This is the dropdown menu
+                 dropdownCB.setPreferredSize(new Dimension(100, 20));//This is the size of the dropdown menu
+                 GridBagConstraints gbc_dropdown = new GridBagConstraints();//This is the constraints for the dropdown menu
+                     gbc_dropdown.gridx = 0;//This is the x position of the dropdown menu
+                     gbc_dropdown.gridy = 1;//This is the y position of the dropdown menu
+                     gbc_dropdown.gridwidth = 2;//This is the width of the dropdown menu
+         //endregion
+ 
+         //region - INPUT PANEL - Create the input panel for the users input for the shapes. This will also hold the error message and the button to display the shape
+             JPanel inputPanel = new JPanel();//This is the panel for the users input for the shapes
+                 inputPanel.setLayout(new GridBagLayout());//This is the layout of the panel for the users input for the shapes
+                 GridBagConstraints gbc_inputPanel = new GridBagConstraints();//This is the constraints for the panel for the users input for the shapes
+                     gbc_inputPanel.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the panel for the users input for the shapes
+                     gbc_inputPanel.gridx = 0;//This is the x position of the panel for the users input for the shapes
+                     gbc_inputPanel.gridy = 2;//This is the y position of the panel for the users input for the shapes
+                     gbc_inputPanel.gridwidth = 3;//This is the width of the panel for the users input for the shapes
+                     inputPanel.setBorder( BorderFactory.createLineBorder(Color.black) );//This is the border for the panel for the users input for the shapes
+         //endregion
+ 
+         //region - ERROR MESSAGE - Create the error message
+             JLabel errorMessage = new JLabel("");//This is the error message
+                 GridBagConstraints gbc_errorMessage = new GridBagConstraints();//This is the constraints for the error message
+                     gbc_errorMessage.gridx = 0;//This is the x position of the error message
+                     gbc_errorMessage.gridy = 0;//This is the y position of the error message
+                     gbc_errorMessage.gridwidth = 2;//This is the width of the error message
+         //endregion
+ 
+         //region - DISPLAY BUTTON - Create the button to display the shape
+             JButton displayShapeButton = new JButton("Display Shape");//This is the button to display the shape
+                 GridBagConstraints gbc_displayShapeButton = new GridBagConstraints();//This is the constraints for the button to display the shape
+                     gbc_displayShapeButton.gridx = 0;//This is the x position of the button to display the shape
+                     gbc_displayShapeButton.gridy = 1;//This is the y position of the button to display the shape
+                     gbc_displayShapeButton.gridwidth = 2;//This is the width of the button to display the shape
+ 
+         //endregion
+ 
+         //region - 2D SHAPES INPUT - Create the input panels for each 2-dimensional shapes
+             //region - CIRCLE INPUT PANEL - Create the input panel for the circle
+                 JPanel circleInputPanel = new JPanel();//This is the panel for the users input for the circle
+                     circleInputPanel.setLayout(new GridBagLayout());//This is the layout of the panel for the users input for the circle
+                     GridBagConstraints gbc_circle = new GridBagConstraints();
+                         gbc_circle.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the panel for the users input for the circle
+                         gbc_circle.gridx = 0;//This is the x position of the panel for the users input for the circle
+                         gbc_circle.gridy = 2;//This is the y position of the panel for the users input for the circle
+                         gbc_circle.gridwidth = 2;//This is the width of the panel for the users input for the circle
+                     
+                     //region - CIRCLE INPUT LABEL - Create the label for the users input for the circle
+                         JLabel circleInputLabel = new JLabel("Enter the radius of the circle: ");//This is the label for the users input for the circle
+                             gbc_circle.gridx = 0;//This is the x position of the label for the users input for the circle
+                             gbc_circle.gridy = 0;//This is the y position of the label for the users input for the circle
+                     //endregion
+ 
+                     //region - CIRCLE INPUT TEXT FIELD - Create the text field for the users input for the circle
+                         JTextField circleInputTextField = new JTextField(10);//This is the text field for the users input for the circle
+                             gbc_circle.gridx = 1;//This is the x position of the text field for the users input for the circle
+                             gbc_circle.gridy = 0;//This is the y position of the text field for the users input for the circle
+                     //endregion
+             //endregion
+ 
+             //region - SQUARE INPUT PANEL - Create the input panel for the square
+                 JPanel squareInputPanel = new JPanel();//This is the panel for the users input for the square
+                     squareInputPanel.setLayout(new GridBagLayout());//This is the layout of the panel for the users input for the square
+                     GridBagConstraints gbc_square = new GridBagConstraints();//This is the constraints for the panel for the users input for the square
+                         gbc_square.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the panel for the users input for the square
+                         gbc_square.gridx = 0;//This is the x position of the panel for the users input for the square
+                         gbc_square.gridy = 2;//This is the y position of the panel for the users input for the square
+                         gbc_square.gridwidth = 2;//This is the width of the panel for the users input for the square    
+ 
+                     //region - SQUARE INPUT LABEL - Create the label for the users input for the square
+                         JLabel squareInputLabel = new JLabel("Enter the length of the square: ");//This is the label for the users input for the square
+                             gbc_square.gridx = 0;//This is the x position of the label for the users input for the square
+                             gbc_square.gridy = 0;//This is the y position of the label for the users input for the square
+                         
+                     //endregion
+ 
+                     //region - SQUARE INPUT TEXT FIELD - Create the text field for the users input for the square
+                         JTextField squareInputTextField = new JTextField(10);//This is the text field for the users input for the square
+                             gbc_square.gridx = 1;//This is the x position of the text field for the users input for the square
+                             gbc_square.gridy = 0;//This is the y position of the text field for the users input for the square
+                     //endregion
+             //endregion
+ 
+             //region - RECTANGLE INPUT PANEL - Create the input panel for the rectangle
+                 JPanel rectangleInputPanel = new JPanel();//This is the panel for the users input for the rectangle
+                     rectangleInputPanel.setLayout(new GridBagLayout());//This is the layout of the panel for the users input for the rectangle
+                     GridBagConstraints gbc_rectangle = new GridBagConstraints();//This is the constraints for the panel for the users input for the rectangle
+                         gbc_rectangle.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the panel for the users input for the rectangle
+                         gbc_rectangle.gridx = 0;//This is the x position of the panel for the users input for the rectangle
+                         gbc_rectangle.gridy = 2;//This is the y position of the panel for the users input for the rectangle
+                         gbc_rectangle.gridwidth = 2;//This is the width of the panel for the users input for the rectangle
+                     //region - RECTANGLE INPUT LABEL - Create the label for the users input for the rectangle
+                         JLabel rectangleInputLabelL = new JLabel("Enter the length of the rectangle: ");//This is the label for the users input for the rectangle length
+                             gbc_rectangle.gridx = 0;//This is the x position of the label for the users input for the rectangle
+                             gbc_rectangle.gridy = 0;//This is the y position of the label for the users input for the rectangle
+                         
+                         JLabel rectangleInputLabelW = new JLabel("Enter the width of the rectangle: ");//This is the label for the users input for the rectangle width
+                             gbc_rectangle.gridx = 0;//This is the x position of the label for the users input for the rectangle
+                             gbc_rectangle.gridy = 1;//This is the y position of the label for the users input for the rectangle
+                     //endregion
+ 
+                     //region - RECTANGLE INPUT TEXT FIELD - Create the text field for the users input for the rectangle
+                         JTextField rectangleInputTextFieldL = new JTextField(10);//This is the text field for the users input for the rectangle length
+                             gbc_rectangle.gridx = 1;//This is the x position of the text field for the users input for the rectangle
+                             gbc_rectangle.gridy = 0;//This is the y position of the text field for the users input for the rectangle
+ 
+                         JTextField rectangleInputTextFieldW = new JTextField(10);//This is the text field for the users input for the rectangle width
+                             gbc_rectangle.gridx = 1;//This is the x position of the text field for the users input for the rectangle
+                             gbc_rectangle.gridy = 1;//This is the y position of the text field for the users input for the rectangle
+                     //endregion
+             //endregion
+ 
+             //region - TRIANGLE INPUT PANEL - Create the input panel for the triangle
+                 JPanel triangleInputPanel = new JPanel();//This is the panel for the users input for the triangle
+                     triangleInputPanel.setLayout(new GridBagLayout());//This is the layout of the panel for the users input for the triangle
+                     GridBagConstraints gbc_triangle = new GridBagConstraints();//This is the constraints for the panel for the users input for the triangle
+                         gbc_triangle.fill = GridBagConstraints.HORIZONTAL;//This is the fill for the panel for the users input for the triangle
+                         gbc_triangle.gridx = 0;//This is the x position of the panel for the users input for the triangle
+                         gbc_triangle.gridy = 2;//This is the y position of the panel for the users input for the triangle
+                         gbc_triangle.gridwidth = 2;//This is the width of the panel for the users input for the triangle
+                 //region - TRIANGLE INPUT LABEL - Create the label for the users input for the triangle
+                     JLabel triangleInputLabelB = new JLabel("Enter Base length of the triangle: ");//This is the label for the users input for the triangle
+                         gbc_triangle.gridx = 0;//This is the x position of the label for the users input for the triangle
+                         gbc_triangle.gridy = 0;//This is the y position of the label for the users input for the triangle
+                     
+                     JLabel triangleInputLabelH = new JLabel("Enter Height of the triangle: ");//This is the label for the users input for the triangle
+                         gbc_triangle.gridx = 0;//This is the x position of the label for the users input for the triangle
+                         gbc_triangle.gridy = 1;//This is the y position of the label for the users input for the triangle
+                 //endregion
+ 
+                 //region - TRIANGLE INPUT TEXT FIELD - Create the text field for the users input for the triangle
+                     JTextField triangleInputTextFieldB = new JTextField(10);//This is the text field for the users input for the triangle
+                         gbc_triangle.gridx = 1;//This is the x position of the text field for the users input for the triangle
+                         gbc_triangle.gridy = 0;//This is the y position of the text field for the users input for the triangle
+                     
+                     JTextField triangleInputTextFieldH = new JTextField(10);//This is the text field for the users input for the triangle
+                         gbc_triangle.gridx = 1;//This is the x position of the text field for the users input for the triangle
+                         gbc_triangle.gridy = 1;//This is the y position of the text field for the users input for the triangle
+                 //endregion
+             //endregion
+         //endregion
+        
+         //region - SHAPE PANEL - Create the panel for the shape
+             JPanel shapeInputPanel = new JPanel(new CardLayout());//This is the panel for the shape
+                 CardLayout cl_shapeInputPanel = (CardLayout)(shapeInputPanel.getLayout());//This is the layout of the panel for the shape
+                 shapeInputPanel.setPreferredSize( new Dimension( 300, 300 ) );//This is the size of the panel for the shape
+         //endregion
+ 
+         //region - SHAPE DISPLAY - Create the panel for the shape display
+             JPanel shapeDisplayPanel = new JPanel(new CardLayout());//This is the panel for the shape display
+                 CardLayout cl_shapeDisplayPanel = (CardLayout)(shapeDisplayPanel.getLayout());//This is the layout of the panel for the shape display
+             //region -SHAPE DISPLAY INSTANCES - Create the instances of the shapes
+                 //region - 2D SHAPES - Create the instances of the 2-dimensional shapes
+                     CircleDisplayPanel circleDisplay = new CircleDisplayPanel();//This is the instance of the circle display
+                     SquareDisplayPanel squareDisplay = new SquareDisplayPanel();//This is the instance of the square display
+                     RectangleDisplayPanel rectangleDisplay = new RectangleDisplayPanel();//This is the instance of the rectangle display
+                     TriangleDisplayPanel triangleDisplay = new TriangleDisplayPanel();//This is the instance of the triangle display
+                 //endregion
+                 //region - 3D SHAPES - Create the instances of the 3-dimensional shapes
+                     SphereDisplayPanel sphereDisplay = new SphereDisplayPanel();//This is the instance of the sphere display
+                     CubeDisplayPanel cubeDisplay = new CubeDisplayPanel();//This is the instance of the cube display
+                     ConeDisplayPanel coneDisplay = new ConeDisplayPanel();//This is the instance of the cone display
+                     CylinderDisplayPanel cylinderDisplay = new CylinderDisplayPanel();//This is the instance of the cylinder display
+                     TorusDisplayPanel torusDisplay = new TorusDisplayPanel();//This is the instance of the torus display
+                 //endregion
+             //endregion
+         //endregion
+ 
+         //region - ADDING COMPONENTS - Add the components to the frame
+             frame.add(mainPanel);//This adds the main panel to the frame
+                 mainPanel.add(titleLabel, gbc_title);//This adds the label to the main panel
+                 mainPanel.add(dropdownCB, gbc_dropdown);//This adds the dropdown menu to the main panel
+                 mainPanel.add(inputPanel, gbc_inputPanel);//This adds the panel for the users input for the shapes to the main panel
+                     inputPanel.add(errorMessage, gbc_errorMessage);//This adds the error message to the panel for the users input for the shapes
+                     inputPanel.add(displayShapeButton, gbc_displayShapeButton);//This adds the button to display the shape to the panel for the users input for the shapes
+                 mainPanel.add(shapeInputPanel, cl_shapeInputPanel);
+                     shapeInputPanel.add(circleInputPanel, "Circle");//This adds the panel for the users input for the circle to the panel for the shape
+                         circleInputPanel.add(circleInputLabel, gbc_circle);//This adds the label for the users input for the circle to the panel for the users input for the circle
+                         circleInputPanel.add(circleInputTextField, gbc_circle);//This adds the text field for the users input for the circle to the panel for the users input for the circle
+                     shapeInputPanel.add(squareInputPanel, "Square");//This adds the panel for the users input for the square to the panel for the shape
+                         squareInputPanel.add(squareInputLabel, gbc_square);//This adds the label for the users input for the square to the panel for the users input for the square
+                         squareInputPanel.add(squareInputTextField, gbc_square);//This adds the text field for the users input for the square to the panel for the users input for the square
+                     shapeInputPanel.add(rectangleInputPanel, "Rectangle");//This adds the panel for the users input for the rectangle to the panel for the shape
+                         rectangleInputPanel.add(rectangleInputLabelL, gbc_rectangle);//This adds the label for the users input for the rectangle to the panel for the users input for the rectangle length
+                         rectangleInputPanel.add(rectangleInputTextFieldL, gbc_rectangle);//This adds the text field for the users input for the rectangle to the panel for the users input for the rectangle length
+                         rectangleInputPanel.add(rectangleInputLabelW, gbc_rectangle);//This adds the label for the users input for the rectangle to the panel for the users input for the rectangle width
+                         rectangleInputPanel.add(rectangleInputTextFieldW, gbc_rectangle);//This adds the text field for the users input for the rectangle to the panel for the users input for the rectangle width
+                     shapeInputPanel.add(triangleInputPanel, "Triangle");//This adds the panel for the users input for the triangle to the panel for the shape
+                         triangleInputPanel.add(triangleInputLabelB, gbc_triangle);//This adds the label for the users input for the triangle to the panel for the users input for the triangle base
+                         triangleInputPanel.add(triangleInputTextFieldB, gbc_triangle);//This adds the text field for the users input for the triangle to the panel for the users input for the triangle base
+                         triangleInputPanel.add(triangleInputLabelH, gbc_triangle);//This adds the label for the users input for the triangle to the panel for the users input for the triangle height
+                         triangleInputPanel.add(triangleInputTextFieldH, gbc_triangle);//This adds the text field for the users input for the triangle to the panel for the users input for the triangle height
+                 mainPanel.add(shapeDisplayPanel, cl_shapeDisplayPanel);//This adds the panel for the shape display to the main panel
+                     shapeDisplayPanel.add(circleDisplay, "Circle");//This adds the circle display to the panel for the shape display
+                     shapeDisplayPanel.add(squareDisplay, "Square");//This adds the square display to the panel for the shape display
+                     shapeDisplayPanel.add(rectangleDisplay, "Rectangle");//This adds the rectangle display to the panel for the shape display
+                     shapeDisplayPanel.add(triangleDisplay, "Triangle");//This adds the triangle display to the panel for the shape display
+                     shapeDisplayPanel.add(sphereDisplay, "Sphere");//This adds the sphere display to the panel for the shape display
+                     shapeDisplayPanel.add(cubeDisplay, "Cube");//This adds the cube display to the panel for the shape display
+                     shapeDisplayPanel.add(coneDisplay, "Cone");//This adds the cone display to the panel for the shape display
+                     shapeDisplayPanel.add(cylinderDisplay, "Cylinder");//This adds the cylinder display to the panel for the shape display
+                     shapeDisplayPanel.add(torusDisplay, "Torus");//This adds the torus display to the panel for the shape display
+         //endregion
+         
+         //region - DEFAULT SETTINGS - Set the default settings for the GUI
+             frame.setVisible(true);//This makes the frame visible to start with
+                 mainPanel.setVisible(true);//This makes the main panel visible to start with
+                     titleLabel.setVisible(true);//This makes the title label visible to start with
+                     dropdownCB.setVisible(true);//This makes the dropdown menu visible to start with
+                     dropdownCB.setSelectedIndex(0);//This is the default option in the dropdown menu
+                     inputPanel.setVisible(false);//This makes the input panel invisible to start with
+                         errorMessage.setVisible(false);//This makes the error message invisible to start with
+                         displayShapeButton.setVisible(false);//This makes the display shape button visible to start with
+                     shapeInputPanel.setVisible(false);//This makes the panel for the shape input visible to start with
+         //endregion
+         
+         dropdownCB.addActionListener(comboBoxListener -> {
+             if (comboBoxListener.getSource() instanceof JComboBox) {
+                 //Get the selected item from the dropdown menu.
+                 String selectedShape = (String) dropdownCB.getSelectedItem();
+                 displayShapeButton.setVisible(false);
+ 
+                 //region - SWITCH STATEMENT - This is the switch statement for the dropdown menu
+                     switch(selectedShape) {
+                     }
+                 //endregion
+             }
+         });
+         frame.revalidate();
+         frame.repaint();
+     }
+ 
+     /*
+      * I want to make an if statement for checking the user's input. Send to a boolean method, check if it is valid. If it is not valid have string method get a code number from the boolean statement. Once the boolean has returned the false value to the if statement, it will go to the else which will call the string method's value and display the error message.
+      */
+ 
+     
+ 
+ 
+     //Method: main
+     public static void main(String[] args) {
+         //Create the GUI
+         createGUI();
+     }
+ }
+ 
+ 
