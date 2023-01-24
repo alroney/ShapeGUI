@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class RectangleDisplayPanel extends JPanel {
     private int width;
-    private int height;
+    private int length;
 
     public RectangleDisplayPanel() {
     }
@@ -19,8 +19,8 @@ public class RectangleDisplayPanel extends JPanel {
         this.width = width;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setLength(int length) {
+        this.length = length;
     }
 
     @Override
@@ -35,6 +35,6 @@ public class RectangleDisplayPanel extends JPanel {
         int yCenter = panelHeight/2;
 
         g.setColor(Color.red);
-        g.fillRect(xCenter - width/2, yCenter - height/2, width, height);
+        g.fillRect(xCenter - width/2, yCenter - length/2, width, length);
     }
 }

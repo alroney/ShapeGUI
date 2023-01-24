@@ -11,7 +11,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ShapeGUI {
-    private static String input;
+    private static String input1;
+    private static String input2;
 
     //Method: create the GUI
     public static void createGUI() {
@@ -108,7 +109,7 @@ public class ShapeGUI {
                     //endregion
 
                     //region - SQUARE INPUT TEXT FIELD - Create the text field for the users input for the square
-                        JTextField squareInputTextField = new JTextField(10);//This is the text field for the users input for the square
+                        JTextField squareInputTextField = new JTextField();//This is the text field for the users input for the square
                             squareInputTextField.setMinimumSize(new Dimension(100, 25));//This will set the size of the text field
                             squareInputTextField.setMaximumSize(new Dimension(100, 25));//This will set the size of the text field
                             squareInputPanel.add(squareInputTextField);//This will add the text field to the panel
@@ -120,32 +121,79 @@ public class ShapeGUI {
 
             //region - RECTANGLE INPUT PANEL - Create the input panel for the rectangle
                 JPanel rectangleInputPanel = new JPanel();//This is the panel for the users input for the rectangle
+                    Box ripBox1 = Box.createHorizontalBox();//This will create a horizontal box
+                    Box ripBox2 = Box.createHorizontalBox();//This will create a horizontal box
+                    rectangleInputPanel.setLayout(new BoxLayout(rectangleInputPanel, BoxLayout.Y_AXIS));//This will set the layout of the panel to be vertical
+                    rectangleInputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the panel to the center of the panel
+                    rectangleInputPanel.setAlignmentY(Component.CENTER_ALIGNMENT);//This will align the panel to the top of the panel
+                    rectangleInputPanel.setMaximumSize(new Dimension(300, 150));//This will set the size of the panel
+
                     //region - RECTANGLE INPUT LABEL - Create the label for the users input for the rectangle
                         JLabel rectangleInputLabelL = new JLabel("Enter the length of the rectangle: ");//This is the label for the users input for the rectangle length
+                            rectangleInputLabelL.setAlignmentX(Component.LEFT_ALIGNMENT);//This will align the label to the left of the panel
+                            rectangleInputPanel.add(rectangleInputLabelL);//This will add the label to the panel
                         
                         JLabel rectangleInputLabelW = new JLabel("Enter the width of the rectangle: ");//This is the label for the users input for the rectangle width
+                            rectangleInputLabelW.setAlignmentX(Component.LEFT_ALIGNMENT);//This will align the label to the left of the panel
+                            rectangleInputPanel.add(rectangleInputLabelW);//This will add the label to the panel
                     //endregion
 
                     //region - RECTANGLE INPUT TEXT FIELD - Create the text field for the users input for the rectangle
-                        JTextField rectangleInputTextFieldL = new JTextField(10);//This is the text field for the users input for the rectangle length
+                        JTextField rectangleInputTextFieldL = new JTextField();//This is the text field for the users input for the rectangle length
+                            rectangleInputTextFieldL.setMinimumSize(new Dimension(100, 25));//This will set the size of the text field
+                            rectangleInputTextFieldL.setMaximumSize(new Dimension(100, 25));//This will set the size of the text field
+                            rectangleInputPanel.add(rectangleInputTextFieldL);//This will add the text field to the panel
 
-                        JTextField rectangleInputTextFieldW = new JTextField(10);//This is the text field for the users input for the rectangle width
+                        JTextField rectangleInputTextFieldW = new JTextField();//This is the text field for the users input for the rectangle width
+                            rectangleInputTextFieldW.setMinimumSize(new Dimension(100, 25));//This will set the size of the text field
+                            rectangleInputTextFieldW.setMaximumSize(new Dimension(100, 25));//This will set the size of the text field
+                            rectangleInputPanel.add(rectangleInputTextFieldW);//This will add the text field to the panel
                     //endregion
+                ripBox1.add(rectangleInputLabelL);//This will add the label to the horizontal box
+                ripBox1.add(rectangleInputTextFieldL);//This will add the text field to the horizontal box
+                ripBox2.add(rectangleInputLabelW);//This will add the label to the horizontal box
+                ripBox2.add(rectangleInputTextFieldW);//This will add the text field to the horizontal box
+                rectangleInputPanel.add(ripBox1);//This will add the horizontal box to the panel
+                rectangleInputPanel.add(ripBox2);//This will add the horizontal box to the panel
+
             //endregion
 
             //region - TRIANGLE INPUT PANEL - Create the input panel for the triangle
                 JPanel triangleInputPanel = new JPanel();//This is the panel for the users input for the triangle
-                //region - TRIANGLE INPUT LABEL - Create the label for the users input for the triangle
-                    JLabel triangleInputLabelB = new JLabel("Enter Base length of the triangle: ");//This is the label for the users input for the triangle
-                    
-                    JLabel triangleInputLabelH = new JLabel("Enter Height of the triangle: ");//This is the label for the users input for the triangle
-                //endregion
+                    Box tipBox1 = Box.createHorizontalBox();//This will create a horizontal box
+                    Box tipBox2 = Box.createHorizontalBox();//This will create a horizontal box
+                    triangleInputPanel.setLayout(new BoxLayout(triangleInputPanel, BoxLayout.Y_AXIS));//This will set the layout of the panel to be vertical
+                    triangleInputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the panel to the center of the panel
+                    triangleInputPanel.setAlignmentY(Component.CENTER_ALIGNMENT);//This will align the panel to the top of the panel
+                    triangleInputPanel.setMaximumSize(new Dimension(300, 150));//This will set the size of the panel
 
-                //region - TRIANGLE INPUT TEXT FIELD - Create the text field for the users input for the triangle
-                    JTextField triangleInputTextFieldB = new JTextField(10);//This is the text field for the users input for the triangle
-                    
-                    JTextField triangleInputTextFieldH = new JTextField(10);//This is the text field for the users input for the triangle
-                //endregion
+                    //region - TRIANGLE INPUT LABEL - Create the label for the users input for the triangle
+                        JLabel triangleInputLabelB = new JLabel("Enter Base length of the triangle: ");//This is the label for the users input for the triangle
+                            triangleInputLabelB.setAlignmentX(Component.LEFT_ALIGNMENT);//This will align the label to the left of the panel
+                            triangleInputPanel.add(triangleInputLabelB);//This will add the label to the panel
+                        
+                        JLabel triangleInputLabelH = new JLabel("Enter Height of the triangle: ");//This is the label for the users input for the triangle
+                            triangleInputLabelH.setAlignmentX(Component.LEFT_ALIGNMENT);//This will align the label to the left of the panel
+                            triangleInputPanel.add(triangleInputLabelH);//This will add the label to the panel
+                    //endregion
+
+                    //region - TRIANGLE INPUT TEXT FIELD - Create the text field for the users input for the triangle
+                        JTextField triangleInputTextFieldB = new JTextField();//This is the text field for the users input for the triangle
+                            triangleInputTextFieldB.setMinimumSize(new Dimension(100, 25));//This will set the size of the text field
+                            triangleInputTextFieldB.setMaximumSize(new Dimension(100, 25));//This will set the size of the text field
+                            triangleInputPanel.add(triangleInputTextFieldB);//This will add the text field to the panel
+
+                        JTextField triangleInputTextFieldH = new JTextField();//This is the text field for the users input for the triangle
+                            triangleInputTextFieldH.setMinimumSize(new Dimension(100, 25));//This will set the size of the text field
+                            triangleInputTextFieldH.setMaximumSize(new Dimension(100, 25));//This will set the size of the text field
+                            triangleInputPanel.add(triangleInputTextFieldH);//This will add the text field to the panel
+                    //endregion
+                tipBox1.add(triangleInputLabelB);//This will add the label to the horizontal box
+                tipBox1.add(triangleInputTextFieldB);//This will add the text field to the horizontal box
+                tipBox2.add(triangleInputLabelH);//This will add the label to the horizontal box
+                tipBox2.add(triangleInputTextFieldH);//This will add the text field to the horizontal box
+                triangleInputPanel.add(tipBox1);//This will add the horizontal box to the panel
+                triangleInputPanel.add(tipBox2);//This will add the horizontal box to the panel
             //endregion
         //endregion
        
@@ -237,6 +285,7 @@ public class ShapeGUI {
 
                 //region - SWITCH STATEMENT - This is the switch statement for the dropdown menu
                     switch(selectedShape) {
+                    //region - CIRCLE CASE - This is the case for the circle
                         case "Circle":
                             inputPanel.setVisible(true);//This will make the input panel visible
                             shapeInputPanel.setVisible(true);//This will make the shape input panel visible
@@ -246,111 +295,253 @@ public class ShapeGUI {
                             displayShapeButton.addActionListener(CircleListener -> {//This is the action listener for the display shape button
                                 if (CircleListener.getSource() instanceof JButton) {
                                     try{
-                                        input = circleInputTextField.getText();//This is the input from the text field
-                                        int inputChecked = checkInput(input);//This is the checked input from the text field
+                                        input1 = circleInputTextField.getText();//This is the input from the text field
+                                        input2 = circleInputTextField.getText();//This is the input from the text field
+                                        int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
                                         switch(inputChecked){
-                                            case 0:
+                                            case 0://This is the case for when the input is non-numeric
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e1"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 1:
+                                            case 1://This is the case for when the input is empty
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e2"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 2:
+                                            case 2://This is the case for when the input is less than or = to 0
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e3"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 3:
+                                            case 3://This is the case for when the input is greater than 199
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e4"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 4:
+                                            case 4://This is the case for when the input is not an integer
+                                                shapeDisplayPanel.setVisible(false);
+                                                errorMessage.setText(getErrorMessage("e5"));
+                                                errorMessage.setVisible(true);
+                                                break;
+                                            case 5://This is the case for when the input is valid
                                                 errorMessage.setVisible(false);
                                                 shapeDisplayPanel.setVisible(true);
                                                 shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
                                                 shapeDisplayPanel.add(circleDisplay);//This adds the circle display to the shape display panel
-                                                circleDisplay.setRadius(Integer.parseInt(input));//This sets the radius of the circle display
+                                                circleDisplay.setRadius(Integer.parseInt(input1));//This sets the radius of the circle display
                                                 circleDisplay.revalidate();//This revalidates the circle display
                                                 circleDisplay.repaint();//This repaints the circle display
                                                 break;
-                                            default:
+                                            default://This is the default case. This should never be reached
                                                 shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e5"));
+                                                errorMessage.setText(getErrorMessage("e6"));
                                                 errorMessage.setVisible(true);
                                                 break;
                                         }
                                     }catch(Exception e){
-                                        errorMessage.setText(getErrorMessage("e5"));
+                                        errorMessage.setText(getErrorMessage("e7"));
                                         errorMessage.setVisible(true);
                                     }
                                 }
                                 
                             });
-                            break;
+                            break;//End of case "Circle"
+                        //endregion
 
+                    //region - SQUARE CASE - This is the case for the square
                         case "Square":
-                            inputPanel.setVisible(true);
-                            shapeInputPanel.setVisible(true);
-                            shapeInputPanel.add(squareInputPanel);
-                            squareInputPanel.setVisible(true);
-                            displayShapeButton.setVisible(true);
-                            //Create the button listener for the display shape button
-                            displayShapeButton.addActionListener(SquareListener -> {
+                            inputPanel.setVisible(true);//This will make the input panel visible
+                            shapeInputPanel.setVisible(true);//This will make the shape input panel visible
+                            shapeInputPanel.add(squareInputPanel);//This will add the square input panel to the shape input panel
+                            squareInputPanel.setVisible(true);//This will make the square input panel visible
+                            displayShapeButton.setVisible(true);//This will make the display shape button visible
+                            displayShapeButton.addActionListener(SquareListener -> {//This is the action listener for the display shape button
                                 if (SquareListener.getSource() instanceof JButton) {
 
                                     try{
-                                        input = squareInputTextField.getText();//This is the input from the text field
-                                        int inputChecked = checkInput(input);//This is the checked input from the text field
+                                        input1 = squareInputTextField.getText();//This is the input from the text field
+                                        input2 = squareInputTextField.getText();//This is the input from the text field
+                                        int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
                                         switch(inputChecked){
-                                            case 0:
+                                            case 0://This is the case for when the input is not a numeric value
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e1"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 1:
+                                            case 1://This is the case for when the input is empty
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e2"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 2:
+                                            case 2://This is the case for when the input is less than = to 0
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e3"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 3:
+                                            case 3://This is the case for when the input is greater than 199
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e4"));
                                                 errorMessage.setVisible(true);
                                                 break;
-                                            case 4:
-                                                errorMessage.setVisible(false);
-                                                shapeDisplayPanel.setVisible(true);
-                                                shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
-                                                shapeDisplayPanel.add(squareDisplay);//This adds the square display to the shape display panel
-                                                squareDisplay.setSide(Integer.parseInt(input));//This sets the side of the square display
-                                                squareDisplay.revalidate();//This revalidates the square display
-                                                squareDisplay.repaint();//This repaints the square display
-                                                break;
-                                            default:
+                                            case 4://This is the case for when the input is not an integer
                                                 shapeDisplayPanel.setVisible(false);
                                                 errorMessage.setText(getErrorMessage("e5"));
                                                 errorMessage.setVisible(true);
                                                 break;
+                                            case 5://This is the case for when the input is valid
+                                                errorMessage.setVisible(false);
+                                                shapeDisplayPanel.setVisible(true);
+                                                shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
+                                                shapeDisplayPanel.add(squareDisplay);//This adds the square display to the shape display panel
+                                                squareDisplay.setSide(Integer.parseInt(input1));//This sets the side of the square display
+                                                squareDisplay.revalidate();//This revalidates the square display
+                                                squareDisplay.repaint();//This repaints the square display
+                                                break;
+                                            default://This is the default case, this should never be reached
+                                                shapeDisplayPanel.setVisible(false);
+                                                errorMessage.setText(getErrorMessage("e6"));
+                                                errorMessage.setVisible(true);
+                                                break;
                                         }
                                     }catch(Exception e){
-                                        errorMessage.setText(getErrorMessage("e5"));
+                                        errorMessage.setText(getErrorMessage("e6"));
                                         errorMessage.setVisible(true);
                                     }
                                 }
-                                
                             });
-                            break;
+                            break;//End of case "Square"
+                    //endregion
 
+                    //region - RECTANGLE CASE - This is the case for the rectangle
+                            case "Rectangle":
+                                inputPanel.setVisible(true);//This will make the input panel visible
+                                shapeInputPanel.setVisible(true);//This will make the shape input panel visible
+                                shapeInputPanel.add(rectangleInputPanel);//This will add the rectangle input panel to the shape input panel
+                                rectangleInputPanel.setVisible(true);//This will make the rectangle input panel visible
+                                displayShapeButton.setVisible(true);//This will make the display shape button visible
+                                displayShapeButton.addActionListener(RectangleListener -> {//This is the action listener for the display shape button
+                                    if (RectangleListener.getSource() instanceof JButton) {
+                                        try{
+                                            input1 = rectangleInputTextFieldL.getText();//This is the input from the text field
+                                            input2 = rectangleInputTextFieldW.getText();//This is the input from the text field
+                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            switch(inputChecked){
+                                                case 0://This is the case for when the input is not a numeric value
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e1"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 1://This is the case for when the input is empty
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e2"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 2://This is the case for when the input is less than = to 0
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e3"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 3://This is the case for when the input is greater than 199
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e4"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 4://This is the case for when the input is not an integer
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e5"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 5://This is the case for when the input is valid
+                                                    errorMessage.setVisible(false);
+                                                    shapeDisplayPanel.setVisible(true);
+                                                    shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
+                                                    shapeDisplayPanel.add(rectangleDisplay);//This adds the rectangle display to the shape display panel
+                                                    rectangleDisplay.setLength(Integer.parseInt(input1));//This sets the length of the rectangle display
+                                                    rectangleDisplay.setWidth(Integer.parseInt(input2));//This sets the width of the rectangle display
+                                                    rectangleDisplay.revalidate();//This revalidates the rectangle display
+                                                    rectangleDisplay.repaint();//This repaints the rectangle display
+                                                    break;
+                                                default://This is the default case, this should never be reached
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e6"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                            }
+                                        }catch(Exception e){
+                                            errorMessage.setText(getErrorMessage("e6"));
+                                            errorMessage.setVisible(true);
+                                        }
+                                    }
+                                });
+                                break;//End of case "Rectangle"
+                    //endregion
+                                
+                    //region - TRIANGLE CASE - This is the case for the triangle
+                            case "Triangle":
+                                inputPanel.setVisible(true);//This will make the input panel visible
+                                shapeInputPanel.setVisible(true);//This will make the shape input panel visible
+                                shapeInputPanel.add(triangleInputPanel);//This will add the triangle input panel to the shape input panel
+                                triangleInputPanel.setVisible(true);//This will make the triangle input panel visible
+                                displayShapeButton.setVisible(true);//This will make the display shape button visible
+                                displayShapeButton.addActionListener(TriangleListener -> {//This is the action listener for the display shape button
+                                    if (TriangleListener.getSource() instanceof JButton) {
+                                        try{
+                                            input1 = triangleInputTextFieldB.getText();//This is the input from the text field
+                                            input2 = triangleInputTextFieldH.getText();//This is the input from the text field
+                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            switch(inputChecked){
+                                                case 0://This is the case for when the input is not a numeric value
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e1"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 1://This is the case for when the input is empty
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e2"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 2://This is the case for when the input is less than = to 0
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e3"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 3://This is the case for when the input is greater than 199
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e4"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 4://This is the case for when the input is not an integer
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e5"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 5://This is the case for when the input is valid
+                                                    errorMessage.setVisible(false);
+                                                    shapeDisplayPanel.setVisible(true);
+                                                    shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
+                                                    shapeDisplayPanel.add(triangleDisplay);//This adds the triangle display to the shape display panel
+                                                    triangleDisplay.setBase(Integer.parseInt(input1));//This sets the length of the triangle display
+                                                    triangleDisplay.setHeight(Integer.parseInt(input2));//This sets the width of the triangle display
+                                                    triangleDisplay.revalidate();//This revalidates the triangle display
+                                                    triangleDisplay.repaint();//This repaints the triangle display
+                                                    break;
+                                                default://This is the default case, this should never be reached
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e6"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                            }
+                                        }catch(Exception e){
+                                            errorMessage.setText(getErrorMessage("e6"));
+                                            errorMessage.setVisible(true);
+                                        }
+                                    }
+                                });
+                                break;//End of case "Triangle"
+                    //endregion
+
+                    //region - DEFAULT CASE - This is the default case, this should never be reached
                             default:
                                 inputPanel.setVisible(false);
                                 shapeInputPanel.setVisible(false);
@@ -360,7 +551,7 @@ public class ShapeGUI {
                                 shapeDisplayPanel.setVisible(false);
                                 errorMessage.setVisible(false);
                                 break;
-                            
+                    //endregion
                     }
                 //endregion
             }
@@ -369,24 +560,29 @@ public class ShapeGUI {
         frame.repaint();
     }
 
-
+    //Method: get the error message based on the error code
     private static String getErrorMessage(String eCode){
         switch(eCode){
             case "e1": return "Error: Cannot use non-numeric values.";
             case "e2": return "Error: Cannot leave field empty.";
             case "e3": return "Error: Number must be greater than 0.";
             case "e4": return "Error: Number must be less than 200.";
+            case "e5": return "Please use a whole number.";
+            case "e7": return "Went to catch block.";
             default: return "Error: Unknown error.";
         }
     }
 
-    //Create method to check if a string is non-numeric (contains alphabetical characters), empty, less than 0 (contains a '-' or is 0), or greater than 200. Reuturn a int to indicate which error it is.
-    private static int checkInput(String input){
-        if(input.isEmpty()) return 1;
-        if(!input.matches("-?\\d+(\\.\\d+)?")) return 0;
-        if(Integer.parseInt(input) <= 0) return 2;
-        if(Integer.parseInt(input) > 200) return 3;
-        return 4;
+    //Method: check if a string is non-numeric (contains alphabetical characters), empty, less than 0 (contains a '-' or is 0), or greater than 200. Reuturn a int to indicate which error it is.
+    private static int checkInput(String input1, String input2){
+        if(input2.equals("null")) input2 = null;
+
+        if(input1.isEmpty() || ((input2.isEmpty()) && (input2 != null))) return 1;//This is the case for when the input is empty
+        if(!input1.matches("-?\\d+(\\.\\d+)?") || ((!input2.matches("-?\\d+(\\.\\d+)?")) && (input2 != null))) return 0;//This is the case for when the input is not a numeric value
+        if(!input1.matches("-?(\\d+)?") || ((!input2.matches("-?(\\d+)?")) && (input2 != null))) return 4;//This is the case for when the input is not an integer
+        if(Integer.parseInt(input1) <= 0 || ((Integer.parseInt(input2) <= 0) && (input2 != null))) return 2;//This is the case for when the input is less than or equal to 0
+        if(Integer.parseInt(input1) > 199 || ((Integer.parseInt(input2) > 199) && (input2 != null))) return 3;//This is the case for when the input is greater than 199
+        return 5;//This is the case for when the input is valid
     }
     
 
