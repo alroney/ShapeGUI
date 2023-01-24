@@ -42,7 +42,7 @@ public class TriangleDisplayPanel extends JPanel {
         int xCenter = width/2;
         int yCenter = height/2;
 
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         g.fillPolygon(new int[] {xCenter, xCenter - base/2, xCenter + base/2}, new int[] {yCenter - height/2, yCenter + height/2, yCenter + height/2}, 3);
     }
 }

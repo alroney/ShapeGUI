@@ -24,6 +24,18 @@ public class ShapeGUI {
 
         //endregion
         
+        //region - SPACERS - Create spacers for the layout to make it look nice
+            JPanel spacer1 = new JPanel();
+                spacer1.setLayout(new BoxLayout(spacer1, BoxLayout.Y_AXIS));
+                spacer1.add(Box.createRigidArea(new Dimension(0,10)));
+            JPanel spacer2 = new JPanel();
+                spacer2.setLayout(new BoxLayout(spacer2, BoxLayout.Y_AXIS));
+                spacer2.add(Box.createRigidArea(new Dimension(0,10)));
+            JPanel spacer3 = new JPanel();
+                spacer3.setLayout(new BoxLayout(spacer3, BoxLayout.Y_AXIS));
+                spacer3.add(Box.createRigidArea(new Dimension(0,20)));
+        //endregion
+        
         //region - MAIN PANEL - Create the panel
             JPanel mainPanel = new JPanel();//This is the main panel
             mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));//This will set the layout of the main panel to be vertical
@@ -34,14 +46,20 @@ public class ShapeGUI {
             JLabel titleLabel = new JLabel("Shape GUI");//This is the label for the dropdown menu
             titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the label to the center of the panel
             titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);//This will align the label to the top of the panel
+            titleLabel.setMaximumSize(new Dimension(100, 25));//This will set the size of the label
+            titleLabel.setFont(new Font("Calibri", Font.BOLD, 22));//This will set the font of the label
+            
+            
         //endregion
 
         //region - DROPDOWN MENU - Create the dropdown menu, with Select Shape as the default option
             String[] shapes = {"Select Shape", "Circle", "Square", "Triangle", "Rectangle", "Sphere", "Cylinder", "Cube", "Cone", "Torus"};//This is the array of shapes that will be displayed in the dropdown menu
             JComboBox<String> dropdownCB = new JComboBox<String>(shapes);//This is the dropdown menu
-            dropdownCB.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the dropdown menu to the center of the panel
-            dropdownCB.setAlignmentY(Component.TOP_ALIGNMENT);//This will align the dropdown menu to the top of the panel
-            dropdownCB.setMaximumSize(new Dimension(100, 25));//This will set the size of the dropdown menu
+            dropdownCB.setSelectedIndex(0);//This will set the default option to be Select Shape
+            dropdownCB.setAlignmentX(0.5f);//This will align the dropdown menu to the center of the panel
+            dropdownCB.setAlignmentY(0.5f);//This will align the dropdown menu to the top of the panel
+            dropdownCB.setMaximumSize(new Dimension(150, 30));//This will set the size of the dropdown menu
+            dropdownCB.setFont( new Font("Calibri", Font.BOLD, 13));//This will set the font of the dropdown menu
             
         //endregion
 
@@ -49,8 +67,8 @@ public class ShapeGUI {
             JPanel inputPanel = new JPanel();//This is the panel for the users input for the shapes
             inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));//This will set the layout of the input panel to be vertical
             inputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the input panel to the center of the panel
-            inputPanel.setMinimumSize(new Dimension(200, 100));//This will set the size of the input panel
-            inputPanel.setMaximumSize(new Dimension(400, 150));//This will set the size of the input panel
+            inputPanel.setMinimumSize(new Dimension(150, 100));//This will set the size of the input panel
+            inputPanel.setMaximumSize(new Dimension(300, 100));//This will set the size of the input panel
             
         //endregion
 
@@ -58,7 +76,7 @@ public class ShapeGUI {
             JLabel errorMessage = new JLabel("");//This is the error message
             errorMessage.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the error message to the center of the panel
             errorMessage.setAlignmentY(Component.TOP_ALIGNMENT);//This will align the error message to the top of the panel
-            
+            errorMessage.setForeground(Color.red);//This will set the color of the error message to red
         //endregion
 
         //region - DISPLAY BUTTON - Create the button to display the shape
@@ -196,8 +214,8 @@ public class ShapeGUI {
                 triangleInputPanel.add(tipBox2);//This will add the horizontal box to the panel
             //endregion
         //endregion
-       
-        //region - SHAPE PANEL - Create the panel for the shape
+
+        //region - SHAPE INPUT PANEL - Create the panel for the shape
             JPanel shapeInputPanel = new JPanel();//This is the panel for the shape
             shapeInputPanel.setLayout(new BoxLayout(shapeInputPanel, BoxLayout.Y_AXIS));//This will set the layout of the panel to be vertical
             shapeInputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the panel to the center of the panel
@@ -206,12 +224,15 @@ public class ShapeGUI {
             
         //endregion
 
-        //region - SHAPE DISPLAY - Create the panel for the shape display
+        //region - SHAPE DISPLAY PANEL - Create the panel for the shape display
             //region - SHAPE DISPLAY PANEL - Create the panel for the shape display
                 JPanel shapeDisplayPanel = new JPanel();//This is the panel for the shape display
                 shapeDisplayPanel.setLayout(new BoxLayout(shapeDisplayPanel, BoxLayout.Y_AXIS));//This will set the layout of the panel to be vertical
+                shapeDisplayPanel.setAlignmentX(Component.CENTER_ALIGNMENT);//This will align the panel to the center of the panel
+                shapeDisplayPanel.setAlignmentY(Component.CENTER_ALIGNMENT);//This will align the panel to the top of the panel
+                shapeDisplayPanel.setMaximumSize(new Dimension(300, 300));//This will set the size of the panel
+                shapeDisplayPanel.setMinimumSize(new Dimension(0, 0));//This will set the size of the panel
             //endregion
-
 
             //region -SHAPE DISPLAY INSTANCES - Create the instances of the shapes
                 //region - 2D SHAPES - Create the instances of the 2-dimensional shapes
@@ -230,9 +251,63 @@ public class ShapeGUI {
             //endregion
         //endregion
         
+        //region - 3D SHAPES ASSIGNMENT - Set and create the images, then scale them to fit the panel 
+            //region - 3D SHAPES IMAGE ASSIGNMENT - Assign the image path to the [3D Shape]DisplayPanel's set method
+                sphereDisplay.setSphereImage("ShapeImages\\sphere.png");//This will set the image path to the [3D Shape]DisplayPanel's set method
+                cylinderDisplay.setCylinderImage("ShapeImages\\cylinder.png");//This will set the image path to the [3D Shape]DisplayPanel's set method
+                coneDisplay.setConeImage("ShapeImages\\cone.png");//This will set the image path to the [3D Shape]DisplayPanel's set method
+                cubeDisplay.setCubeImage("ShapeImages\\cube.png");//This will set the image path to the [3D Shape]DisplayPanel's set method
+                torusDisplay.setTorusImage("ShapeImages\\torus.png");//This will set the image path to the [3D Shape]DisplayPanel's set method
+            //endregion
+            //region - 3D SHAPES IMAGEICONS - Create the image icons for the 3-dimensional shapes
+                ImageIcon sphereIcon = new ImageIcon(sphereDisplay.getSphereImage());//This is the image icon for the sphere
+                ImageIcon cubeIcon = new ImageIcon(cubeDisplay.getCubeImage());//This is the image icon for the cube
+                ImageIcon coneIcon = new ImageIcon(coneDisplay.getConeImage());//This is the image icon for the cone
+                ImageIcon cylinderIcon = new ImageIcon(cylinderDisplay.getCylinderImage());//This is the image icon for the cylinder
+                ImageIcon torusIcon = new ImageIcon(torusDisplay.getTorusImage());//This is the image icon for the torus
+            //endregion
+            //region - IMAGE SCALING - Scale the images to the correct size
+                Image sphereImage = sphereIcon.getImage();//This is the image for the sphere
+                Image cubeImage = cubeIcon.getImage();//This is the image for the cube
+                Image coneImage = coneIcon.getImage();//This is the image for the cone
+                Image cylinderImage = cylinderIcon.getImage();//This is the image for the cylinder
+                Image torusImage = torusIcon.getImage();//This is the image for the torus
+                Image newSphereImage = sphereImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);//This will scale the image to the correct size
+                Image newCubeImage = cubeImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);//This will scale the image to the correct size
+                Image newConeImage = coneImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);//This will scale the image to the correct size
+                Image newCylinderImage = cylinderImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);//This will scale the image to the correct size
+                Image newTorusImage = torusImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);//This will scale the image to the correct size
+                sphereIcon = new ImageIcon(newSphereImage);//This will set the image icon to the scaled image
+                cubeIcon = new ImageIcon(newCubeImage);//This will set the image icon to the scaled image
+                coneIcon = new ImageIcon(newConeImage);//This will set the image icon to the scaled image
+                cylinderIcon = new ImageIcon(newCylinderImage);//This will set the image icon to the scaled image
+                torusIcon = new ImageIcon(newTorusImage);//This will set the image icon to the scaled image
+            //endregion
+            //region - 3D SHAPES LABELS - Create the labels for the 3-dimensional shapes using the scaled images
+                JLabel sphereLabel = new JLabel(sphereIcon);//This is the label for the sphere
+                    sphereLabel.setAlignmentX(0.5f);//This will align the label to the center of the panel
+                    sphereLabel.setAlignmentY(0.5f);//This will align the label to the center of the panel
+                JLabel cubeLabel = new JLabel(cubeIcon);//This is the label for the cube
+                    cubeLabel.setAlignmentX(0.5f);//This will align the label to the center of the panel
+                    cubeLabel.setAlignmentY(0.5f);//This will align the label to the center of the panel
+                JLabel coneLabel = new JLabel(coneIcon);//This is the label for the cone
+                    coneLabel.setAlignmentX(0.5f);//This will align the label to the center of the panel
+                    coneLabel.setAlignmentY(0.5f);//This will align the label to the center of the panel
+                JLabel cylinderLabel = new JLabel(cylinderIcon);//This is the label for the cylinder
+                    cylinderLabel.setAlignmentX(0.5f);//This will align the label to the center of the panel
+                    cylinderLabel.setAlignmentY(0.5f);//This will align the label to the center of the panel
+                JLabel torusLabel = new JLabel(torusIcon);//This is the label for the torus
+                    torusLabel.setAlignmentX(0.5f);//This will align the label to the center of the panel
+                    torusLabel.setAlignmentY(0.5f);//This will align the label to the center of the panel
+            //endregion
+        //endregion
+
         //region - ADDING COMPONENTS - Add the components to the panel
+            mainPanel.add(spacer1);//This will add the spacer to the panel
             mainPanel.add(titleLabel);//This will add the title label to the panel
+            mainPanel.add(spacer2);//This will add the spacer to the panel
             mainPanel.add(dropdownCB);//This will add the dropdown box to the panel
+            mainPanel.add(spacer3);//This will add the spacer to the panel
             mainPanel.add(inputPanel);//This will add the input panel to the panel
                 inputPanel.add(errorMessage);//This will add the error message to the panel
                 inputPanel.add(shapeInputPanel);//This will add the shape input panel to the panel
@@ -257,11 +332,11 @@ public class ShapeGUI {
                             squareInputPanel.setVisible(false);//This makes the square input panel invisible to start with
                             rectangleInputPanel.setVisible(false);//This makes the rectangle input panel invisible to start with
                             triangleInputPanel.setVisible(false);//This makes the triangle input panel invisible to start with
-
         //endregion
-        ActionListener[] dropdownCBListeners = dropdownCB.getActionListeners();
-        for (ActionListener listener : dropdownCBListeners) {
-            dropdownCB.removeActionListener(listener);
+        
+        ActionListener[] dropdownCBListeners = dropdownCB.getActionListeners();//This will get the action listeners from the dropdown box
+        for (ActionListener listener : dropdownCBListeners) {//This will loop through the action listeners
+            dropdownCB.removeActionListener(listener);//This will remove the action listener from the dropdown box
         }
         
         dropdownCB.addActionListener(ShapeSelectionListener -> {
@@ -272,16 +347,18 @@ public class ShapeGUI {
                     displayShapeButton.removeActionListener(listener);
                 }
                 String selectedShape = (String) dropdownCB.getSelectedItem();
-                inputPanel.setVisible(false);//This will make the input panel invisible
-                errorMessage.setVisible(false);//This will make the error message invisible
-                shapeInputPanel.removeAll();//This will remove all the components from the shape input panel
-                circleInputPanel.setVisible(false);//This will make the circle input panel invisible
-                squareInputPanel.setVisible(false);//This will make the square input panel invisible
-                rectangleInputPanel.setVisible(false);//This will make the rectangle input panel invisible
-                triangleInputPanel.setVisible(false);//This will make the triangle input panel invisible
-                displayShapeButton.setVisible(false);//This will make the display shape button invisible
-                shapeDisplayPanel.setVisible(false);//This will make the shape display panel invisible
-                shapeDisplayPanel.removeAll();//This will remove all the components from the shape display panel
+                //region - HIDE ALL PANELS - This will hide all the panels and remove all components from the shapeDisplayPanel, everytime a new shape is selected
+                    inputPanel.setVisible(false);//This will make the input panel invisible
+                    errorMessage.setVisible(false);//This will make the error message invisible
+                    shapeInputPanel.removeAll();//This will remove all the components from the shape input panel
+                    circleInputPanel.setVisible(false);//This will make the circle input panel invisible
+                    squareInputPanel.setVisible(false);//This will make the square input panel invisible
+                    rectangleInputPanel.setVisible(false);//This will make the rectangle input panel invisible
+                    triangleInputPanel.setVisible(false);//This will make the triangle input panel invisible
+                    displayShapeButton.setVisible(false);//This will make the display shape button invisible
+                    shapeDisplayPanel.setVisible(false);//This will make the shape display panel invisible
+                    shapeDisplayPanel.removeAll();//This will remove all the components from the shape display panel
+                //endregion
 
                 //region - SWITCH STATEMENT - This is the switch statement for the dropdown menu
                     switch(selectedShape) {
@@ -298,7 +375,7 @@ public class ShapeGUI {
                                         try{
                                             input1 = circleInputTextField.getText();//This is the input from the text field
                                             input2 = circleInputTextField.getText();//This is the input from the text field
-                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            int inputChecked = checkInput(input1, input2, "circle");//This is the checked input from the text field
                                             switch(inputChecked){
                                                 case 0://This is the case for when the input is non-numeric
                                                     shapeDisplayPanel.setVisible(false);
@@ -363,7 +440,7 @@ public class ShapeGUI {
                                         try{
                                             input1 = squareInputTextField.getText();//This is the input from the text field
                                             input2 = squareInputTextField.getText();//This is the input from the text field
-                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            int inputChecked = checkInput(input1, input2, "square");//This is the checked input from the text field
                                             switch(inputChecked){
                                                 case 0://This is the case for when the input is not a numeric value
                                                     shapeDisplayPanel.setVisible(false);
@@ -406,7 +483,7 @@ public class ShapeGUI {
                                                     break;
                                             }
                                         }catch(Exception e){
-                                            errorMessage.setText(getErrorMessage("e6"));
+                                            errorMessage.setText(getErrorMessage("e7"));
                                             errorMessage.setVisible(true);
                                         }
                                     }
@@ -426,7 +503,7 @@ public class ShapeGUI {
                                             try{
                                                 input1 = rectangleInputTextFieldL.getText();//This is the input from the text field
                                                 input2 = rectangleInputTextFieldW.getText();//This is the input from the text field
-                                                int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                                int inputChecked = checkInput(input1, input2, "rectangle");//This is the checked input from the text field
                                                 switch(inputChecked){
                                                     case 0://This is the case for when the input is not a numeric value
                                                         shapeDisplayPanel.setVisible(false);
@@ -463,6 +540,11 @@ public class ShapeGUI {
                                                         rectangleDisplay.revalidate();//This revalidates the rectangle display
                                                         rectangleDisplay.repaint();//This repaints the rectangle display
                                                         break;
+                                                    case 6://This is the case for when the rectangle inputs create a square
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e8"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
                                                     default://This is the default case, this should never be reached
                                                         shapeDisplayPanel.setVisible(false);
                                                         errorMessage.setText(getErrorMessage("e6"));
@@ -470,7 +552,7 @@ public class ShapeGUI {
                                                         break;
                                                 }
                                             }catch(Exception e){
-                                                errorMessage.setText(getErrorMessage("e6"));
+                                                errorMessage.setText(getErrorMessage("e7"));
                                                 errorMessage.setVisible(true);
                                             }
                                         }
@@ -490,7 +572,7 @@ public class ShapeGUI {
                                         try{
                                             input1 = triangleInputTextFieldB.getText();//This is the input from the text field
                                             input2 = triangleInputTextFieldH.getText();//This is the input from the text field
-                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            int inputChecked = checkInput(input1, input2, "triangle");//This is the checked input from the text field
                                             switch(inputChecked){
                                                 case 0://This is the case for when the input is not a numeric value
                                                     shapeDisplayPanel.setVisible(false);
@@ -534,13 +616,50 @@ public class ShapeGUI {
                                                     break;
                                             }
                                         }catch(Exception e){
-                                            errorMessage.setText(getErrorMessage("e6"));
+                                            errorMessage.setText(getErrorMessage("e7"));
                                             errorMessage.setVisible(true);
                                         }
                                     }
                                 });
                                 break;//End of case "Triangle"
                     //endregion
+                    //endregion
+                    //region - 3D SHAPES CASES
+                        //region - SPHERE CASE - This is the case for the sphere
+                            case "Sphere":
+                                sphereLabel.setVisible(true);
+                                shapeDisplayPanel.add(sphereLabel);
+                                shapeDisplayPanel.setVisible(true);
+                                break;//End of case "Sphere"
+                        //endregion
+                        //region - CUBE CASE - This is the case for the cube
+                            case "Cube":
+                                cubeLabel.setVisible(true);
+                                shapeDisplayPanel.add(cubeLabel);
+                                shapeDisplayPanel.setVisible(true);
+                                break;//End of case "Cube"
+                        //endregion
+                        //region - CONE CASE - This is the case for the cone
+                            case "Cone":
+                                coneLabel.setVisible(true);
+                                shapeDisplayPanel.add(coneLabel);
+                                shapeDisplayPanel.setVisible(true);
+                                break;//End of case "Cone"
+                        //endregion
+                        //region - CYLINDER CASE - This is the case for the cylinder
+                            case "Cylinder":
+                                cylinderLabel.setVisible(true);
+                                shapeDisplayPanel.add(cylinderLabel);
+                                shapeDisplayPanel.setVisible(true);
+                                break;//End of case "Cylinder"
+                        //endregion
+                        //region - TORUS CASE - This is the case for the torus
+                            case "Torus":
+                                torusLabel.setVisible(true);
+                                shapeDisplayPanel.add(torusLabel);
+                                shapeDisplayPanel.setVisible(true);
+                                break;//End of case "Torus"
+                        //endregion
                     //endregion
                     //region - DEFAULT CASE - This is the default case, this should never be reached
                             default:
@@ -557,8 +676,8 @@ public class ShapeGUI {
                 //endregion
             }
         });
-        frame.revalidate();
-        frame.repaint();
+        frame.revalidate();//This revalidates the frame
+        frame.repaint();//This repaints the frame
     }
 
     //Method: get the error message based on the error code
@@ -570,12 +689,13 @@ public class ShapeGUI {
             case "e4": return "Error: Number must be less than 200.";
             case "e5": return "Please use a whole number.";
             case "e7": return "Went to catch block.";
+            case "e8": return "Cannot make rectangle into square.";
             default: return "Error: Unknown error.";
         }
     }
 
     //Method: check if a string is non-numeric (contains alphabetical characters), empty, less than 0 (contains a '-' or is 0), or greater than 200. Reuturn a int to indicate which error it is.
-    private static int checkInput(String input1, String input2){
+    private static int checkInput(String input1, String input2, String shape){
         if(input2.equals("null")) input2 = null;
 
         if(input1.isEmpty() || ((input2.isEmpty()) && (input2 != null))) return 1;//This is the case for when the input is empty
@@ -583,10 +703,9 @@ public class ShapeGUI {
         if(!input1.matches("-?(\\d+)?") || ((!input2.matches("-?(\\d+)?")) && (input2 != null))) return 4;//This is the case for when the input is not an integer
         if(Integer.parseInt(input1) <= 0 || ((Integer.parseInt(input2) <= 0) && (input2 != null))) return 2;//This is the case for when the input is less than or equal to 0
         if(Integer.parseInt(input1) > 199 || ((Integer.parseInt(input2) > 199) && (input2 != null))) return 3;//This is the case for when the input is greater than 199
+        if(shape.equals("rectangle") && (Integer.parseInt(input1) == Integer.parseInt(input2))) return 6;//This is the case for when the input is valid
         return 5;//This is the case for when the input is valid
     }
-    
-
 
     //Method: main
     public static void main(String[] args) {

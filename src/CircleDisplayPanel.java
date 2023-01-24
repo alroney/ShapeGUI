@@ -32,7 +32,7 @@ public class CircleDisplayPanel extends JPanel {
         int xCenter = width/2;
         int yCenter = height/2;
 
-        g.setColor(Color.red);
-        g.fillOval(xCenter - radius, yCenter - radius, 2*radius, 2*radius);
+        g.setColor(Color.black);
+        g.fillOval(xCenter - radius/2, yCenter - radius/2, radius, radius);//Draw the circle. Was originally g.drawOval(xCenter - radius, yCenter - radius, 2*radius, 2*radius);. Changed it to fit the box.
     }
 }

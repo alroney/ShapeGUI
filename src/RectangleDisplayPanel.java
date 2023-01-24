@@ -34,7 +34,7 @@ public class RectangleDisplayPanel extends JPanel {
         int xCenter = panelWidth/2;
         int yCenter = panelHeight/2;
 
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         g.fillRect(xCenter - width/2, yCenter - length/2, width, length);
     }
 }

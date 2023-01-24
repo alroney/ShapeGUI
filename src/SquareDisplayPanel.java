@@ -29,7 +29,7 @@ public class SquareDisplayPanel extends JPanel {
         int xCenter = width/2;
         int yCenter = height/2;
 
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         g.fillRect(xCenter - side/2, yCenter - side/2, side, side);
     }
 }
