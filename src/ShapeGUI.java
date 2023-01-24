@@ -285,146 +285,84 @@ public class ShapeGUI {
 
                 //region - SWITCH STATEMENT - This is the switch statement for the dropdown menu
                     switch(selectedShape) {
-                    //region - CIRCLE CASE - This is the case for the circle
-                        case "Circle":
-                            inputPanel.setVisible(true);//This will make the input panel visible
-                            shapeInputPanel.setVisible(true);//This will make the shape input panel visible
-                            shapeInputPanel.add(circleInputPanel);//This will add the circle input panel to the shape input panel
-                            circleInputPanel.setVisible(true);//This will make the circle input panel visible
-                            displayShapeButton.setVisible(true);//This will make the display shape button visible
-                            displayShapeButton.addActionListener(CircleListener -> {//This is the action listener for the display shape button
-                                if (CircleListener.getSource() instanceof JButton) {
-                                    try{
-                                        input1 = circleInputTextField.getText();//This is the input from the text field
-                                        input2 = circleInputTextField.getText();//This is the input from the text field
-                                        int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
-                                        switch(inputChecked){
-                                            case 0://This is the case for when the input is non-numeric
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e1"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 1://This is the case for when the input is empty
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e2"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 2://This is the case for when the input is less than or = to 0
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e3"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 3://This is the case for when the input is greater than 199
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e4"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 4://This is the case for when the input is not an integer
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e5"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 5://This is the case for when the input is valid
-                                                errorMessage.setVisible(false);
-                                                shapeDisplayPanel.setVisible(true);
-                                                shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
-                                                shapeDisplayPanel.add(circleDisplay);//This adds the circle display to the shape display panel
-                                                circleDisplay.setRadius(Integer.parseInt(input1));//This sets the radius of the circle display
-                                                circleDisplay.revalidate();//This revalidates the circle display
-                                                circleDisplay.repaint();//This repaints the circle display
-                                                break;
-                                            default://This is the default case. This should never be reached
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e6"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                        }
-                                    }catch(Exception e){
-                                        errorMessage.setText(getErrorMessage("e7"));
-                                        errorMessage.setVisible(true);
-                                    }
-                                }
-                                
-                            });
-                            break;//End of case "Circle"
-                        //endregion
-
-                    //region - SQUARE CASE - This is the case for the square
-                        case "Square":
-                            inputPanel.setVisible(true);//This will make the input panel visible
-                            shapeInputPanel.setVisible(true);//This will make the shape input panel visible
-                            shapeInputPanel.add(squareInputPanel);//This will add the square input panel to the shape input panel
-                            squareInputPanel.setVisible(true);//This will make the square input panel visible
-                            displayShapeButton.setVisible(true);//This will make the display shape button visible
-                            displayShapeButton.addActionListener(SquareListener -> {//This is the action listener for the display shape button
-                                if (SquareListener.getSource() instanceof JButton) {
-
-                                    try{
-                                        input1 = squareInputTextField.getText();//This is the input from the text field
-                                        input2 = squareInputTextField.getText();//This is the input from the text field
-                                        int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
-                                        switch(inputChecked){
-                                            case 0://This is the case for when the input is not a numeric value
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e1"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 1://This is the case for when the input is empty
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e2"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 2://This is the case for when the input is less than = to 0
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e3"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 3://This is the case for when the input is greater than 199
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e4"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 4://This is the case for when the input is not an integer
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e5"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                            case 5://This is the case for when the input is valid
-                                                errorMessage.setVisible(false);
-                                                shapeDisplayPanel.setVisible(true);
-                                                shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
-                                                shapeDisplayPanel.add(squareDisplay);//This adds the square display to the shape display panel
-                                                squareDisplay.setSide(Integer.parseInt(input1));//This sets the side of the square display
-                                                squareDisplay.revalidate();//This revalidates the square display
-                                                squareDisplay.repaint();//This repaints the square display
-                                                break;
-                                            default://This is the default case, this should never be reached
-                                                shapeDisplayPanel.setVisible(false);
-                                                errorMessage.setText(getErrorMessage("e6"));
-                                                errorMessage.setVisible(true);
-                                                break;
-                                        }
-                                    }catch(Exception e){
-                                        errorMessage.setText(getErrorMessage("e6"));
-                                        errorMessage.setVisible(true);
-                                    }
-                                }
-                            });
-                            break;//End of case "Square"
-                    //endregion
-
-                    //region - RECTANGLE CASE - This is the case for the rectangle
-                            case "Rectangle":
+                    //region - 2D SHAPES CASES
+                        //region - CIRCLE CASE - This is the case for the circle
+                            case "Circle":
                                 inputPanel.setVisible(true);//This will make the input panel visible
                                 shapeInputPanel.setVisible(true);//This will make the shape input panel visible
-                                shapeInputPanel.add(rectangleInputPanel);//This will add the rectangle input panel to the shape input panel
-                                rectangleInputPanel.setVisible(true);//This will make the rectangle input panel visible
+                                shapeInputPanel.add(circleInputPanel);//This will add the circle input panel to the shape input panel
+                                circleInputPanel.setVisible(true);//This will make the circle input panel visible
                                 displayShapeButton.setVisible(true);//This will make the display shape button visible
-                                displayShapeButton.addActionListener(RectangleListener -> {//This is the action listener for the display shape button
-                                    if (RectangleListener.getSource() instanceof JButton) {
+                                displayShapeButton.addActionListener(CircleListener -> {//This is the action listener for the display shape button
+                                    if (CircleListener.getSource() instanceof JButton) {
                                         try{
-                                            input1 = rectangleInputTextFieldL.getText();//This is the input from the text field
-                                            input2 = rectangleInputTextFieldW.getText();//This is the input from the text field
+                                            input1 = circleInputTextField.getText();//This is the input from the text field
+                                            input2 = circleInputTextField.getText();//This is the input from the text field
+                                            int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                            switch(inputChecked){
+                                                case 0://This is the case for when the input is non-numeric
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e1"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 1://This is the case for when the input is empty
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e2"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 2://This is the case for when the input is less than or = to 0
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e3"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 3://This is the case for when the input is greater than 199
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e4"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 4://This is the case for when the input is not an integer
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e5"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                                case 5://This is the case for when the input is valid
+                                                    errorMessage.setVisible(false);
+                                                    shapeDisplayPanel.setVisible(true);
+                                                    shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
+                                                    shapeDisplayPanel.add(circleDisplay);//This adds the circle display to the shape display panel
+                                                    circleDisplay.setRadius(Integer.parseInt(input1));//This sets the radius of the circle display
+                                                    circleDisplay.revalidate();//This revalidates the circle display
+                                                    circleDisplay.repaint();//This repaints the circle display
+                                                    break;
+                                                default://This is the default case. This should never be reached
+                                                    shapeDisplayPanel.setVisible(false);
+                                                    errorMessage.setText(getErrorMessage("e6"));
+                                                    errorMessage.setVisible(true);
+                                                    break;
+                                            }
+                                        }catch(Exception e){
+                                            errorMessage.setText(getErrorMessage("e7"));
+                                            errorMessage.setVisible(true);
+                                        }
+                                    }
+                                    
+                                });
+                                break;//End of case "Circle"
+                            //endregion
+
+                        //region - SQUARE CASE - This is the case for the square
+                            case "Square":
+                                inputPanel.setVisible(true);//This will make the input panel visible
+                                shapeInputPanel.setVisible(true);//This will make the shape input panel visible
+                                shapeInputPanel.add(squareInputPanel);//This will add the square input panel to the shape input panel
+                                squareInputPanel.setVisible(true);//This will make the square input panel visible
+                                displayShapeButton.setVisible(true);//This will make the display shape button visible
+                                displayShapeButton.addActionListener(SquareListener -> {//This is the action listener for the display shape button
+                                    if (SquareListener.getSource() instanceof JButton) {
+
+                                        try{
+                                            input1 = squareInputTextField.getText();//This is the input from the text field
+                                            input2 = squareInputTextField.getText();//This is the input from the text field
                                             int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
                                             switch(inputChecked){
                                                 case 0://This is the case for when the input is not a numeric value
@@ -456,11 +394,10 @@ public class ShapeGUI {
                                                     errorMessage.setVisible(false);
                                                     shapeDisplayPanel.setVisible(true);
                                                     shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
-                                                    shapeDisplayPanel.add(rectangleDisplay);//This adds the rectangle display to the shape display panel
-                                                    rectangleDisplay.setLength(Integer.parseInt(input1));//This sets the length of the rectangle display
-                                                    rectangleDisplay.setWidth(Integer.parseInt(input2));//This sets the width of the rectangle display
-                                                    rectangleDisplay.revalidate();//This revalidates the rectangle display
-                                                    rectangleDisplay.repaint();//This repaints the rectangle display
+                                                    shapeDisplayPanel.add(squareDisplay);//This adds the square display to the shape display panel
+                                                    squareDisplay.setSide(Integer.parseInt(input1));//This sets the side of the square display
+                                                    squareDisplay.revalidate();//This revalidates the square display
+                                                    squareDisplay.repaint();//This repaints the square display
                                                     break;
                                                 default://This is the default case, this should never be reached
                                                     shapeDisplayPanel.setVisible(false);
@@ -474,10 +411,74 @@ public class ShapeGUI {
                                         }
                                     }
                                 });
-                                break;//End of case "Rectangle"
-                    //endregion
-                                
-                    //region - TRIANGLE CASE - This is the case for the triangle
+                                break;//End of case "Square"
+                        //endregion
+
+                        //region - RECTANGLE CASE - This is the case for the rectangle
+                                case "Rectangle":
+                                    inputPanel.setVisible(true);//This will make the input panel visible
+                                    shapeInputPanel.setVisible(true);//This will make the shape input panel visible
+                                    shapeInputPanel.add(rectangleInputPanel);//This will add the rectangle input panel to the shape input panel
+                                    rectangleInputPanel.setVisible(true);//This will make the rectangle input panel visible
+                                    displayShapeButton.setVisible(true);//This will make the display shape button visible
+                                    displayShapeButton.addActionListener(RectangleListener -> {//This is the action listener for the display shape button
+                                        if (RectangleListener.getSource() instanceof JButton) {
+                                            try{
+                                                input1 = rectangleInputTextFieldL.getText();//This is the input from the text field
+                                                input2 = rectangleInputTextFieldW.getText();//This is the input from the text field
+                                                int inputChecked = checkInput(input1, input2);//This is the checked input from the text field
+                                                switch(inputChecked){
+                                                    case 0://This is the case for when the input is not a numeric value
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e1"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                    case 1://This is the case for when the input is empty
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e2"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                    case 2://This is the case for when the input is less than = to 0
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e3"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                    case 3://This is the case for when the input is greater than 199
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e4"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                    case 4://This is the case for when the input is not an integer
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e5"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                    case 5://This is the case for when the input is valid
+                                                        errorMessage.setVisible(false);
+                                                        shapeDisplayPanel.setVisible(true);
+                                                        shapeDisplayPanel.removeAll();//This removes all the components from the shape display panel
+                                                        shapeDisplayPanel.add(rectangleDisplay);//This adds the rectangle display to the shape display panel
+                                                        rectangleDisplay.setLength(Integer.parseInt(input1));//This sets the length of the rectangle display
+                                                        rectangleDisplay.setWidth(Integer.parseInt(input2));//This sets the width of the rectangle display
+                                                        rectangleDisplay.revalidate();//This revalidates the rectangle display
+                                                        rectangleDisplay.repaint();//This repaints the rectangle display
+                                                        break;
+                                                    default://This is the default case, this should never be reached
+                                                        shapeDisplayPanel.setVisible(false);
+                                                        errorMessage.setText(getErrorMessage("e6"));
+                                                        errorMessage.setVisible(true);
+                                                        break;
+                                                }
+                                            }catch(Exception e){
+                                                errorMessage.setText(getErrorMessage("e6"));
+                                                errorMessage.setVisible(true);
+                                            }
+                                        }
+                                    });
+                                    break;//End of case "Rectangle"
+                        //endregion
+                                    
+                        //region - TRIANGLE CASE - This is the case for the triangle
                             case "Triangle":
                                 inputPanel.setVisible(true);//This will make the input panel visible
                                 shapeInputPanel.setVisible(true);//This will make the shape input panel visible
@@ -540,7 +541,7 @@ public class ShapeGUI {
                                 });
                                 break;//End of case "Triangle"
                     //endregion
-
+                    //endregion
                     //region - DEFAULT CASE - This is the default case, this should never be reached
                             default:
                                 inputPanel.setVisible(false);
