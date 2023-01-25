@@ -23,14 +23,6 @@ public class TriangleDisplayPanel extends JPanel {
         this.height = height;
     }
 
-    public int getBase() {
-        return base;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
