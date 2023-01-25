@@ -28,13 +28,13 @@ public class TriangleDisplayPanel extends JPanel {
         super.paintComponent(g);
 
         int width = getWidth();//Get the width of the panel
-        int height = getHeight();//Get the height of the panel
+        int pHeight = getHeight();//Get the height of the panel
 
         //Calculate the center of the panel
         int xCenter = width/2;
-        int yCenter = height/2;
+        int yCenter = pHeight/2;
 
         g.setColor(Color.black);
-        g.fillPolygon(new int[] {xCenter, xCenter - base/2, xCenter + base/2}, new int[] {yCenter - height/2, yCenter + height/2, yCenter + height/2}, 3);
+        g.fillPolygon(new int[] {xCenter - base/2, xCenter + base/2, xCenter}, new int[] {yCenter + height/2, yCenter + height/2, yCenter - height/2}, 3);
     }
 }
